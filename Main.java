@@ -60,7 +60,7 @@ class Main {
           String estado = sc.nextLine();
 
           System.out.println("Informe sua categoria favorita de jogos");
-          String preferencia = sc.nextLine();
+          String preferencia = sc.nextLine(); 
 
           plataforma.addUsuario(nome, cpf, idade, telefone, cidade, estado, preferencia);
         }
