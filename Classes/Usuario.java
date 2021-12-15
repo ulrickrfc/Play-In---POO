@@ -19,7 +19,7 @@ class Usuario extends Pessoa {
 
   public int getQtdPedidos() {
     return this.pedidos.size();
-  }
+  } 
 
   public int getQtdSolicitacoes() {
     return this.solicitacoes.size();
