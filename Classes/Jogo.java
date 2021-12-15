@@ -1,3 +1,5 @@
+package Classes;
+
 abstract class Jogo {
   public static int identificador = 10;
   private int id;

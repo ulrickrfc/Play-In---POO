@@ -1,3 +1,5 @@
+package Classes;
+
 import java.util.ArrayList;
 
 class Usuario extends Pessoa {
@@ -28,7 +30,7 @@ class Usuario extends Pessoa {
   public void imprimeDados() {
     System.out
         .println("Nome: " + super.getNome() + ", CPF: " + super.getCpf() + ", Idade: " + super.getIdade() + ", Cidade: "
-            + super.getCidade() + ", Estado: " + super.getEstado() + "Quantidade de Pedidos: " + this.getQtdPedidos()
+            + super.getCidade() + ", Estado: " + super.getEstado() + ", Quantidade de Pedidos: " + this.getQtdPedidos()
             + ", Quantidade de Solicitacoes: " + this.getQtdSolicitacoes() + ", Preferencia: " + this.preferencia);
   }
 
@@ -37,13 +39,36 @@ class Usuario extends Pessoa {
   // Pedido sem comentario
   public void addPedido(Jogo jogo) {
     this.pedidos.add(new Pedido(jogo));
-    System.out.println("aqui");
   }
 
   // Pedido com comentario
   public void addPedido(Jogo jogo, String comentario) {
     this.pedidos.add(new Pedido(jogo, comentario));
-    System.out.println("aqui");
+  }
+
+  // faz uma busca pelo nome do jogo
+  public int verificaSeTemPedido(String nome) {
+    for (Pedido pedido : this.pedidos) {
+      if (pedido.getNomeJogo().toUpperCase().equals(nome.toUpperCase())) {
+        return pedido.getCodigo();
+      }
+    }
+    return 0;
+
+  }
+
+  // faz uma busca pelo codigo do pedido
+  public void verificaSeTemPedido2(int codigo) {
+    for (Pedido pedido : this.pedidos) {
+      if (pedido.getCodigo() == codigo) {
+        pedido.imprimePedido();
+        System.out.println("");
+        System.out.println("Para saber mais sobre esse pedido, entre com contato com " + super.getNome()
+            + " por WhatsApp pelo numero " + super.getTelefone());
+        System.out.println("");
+
+      }
+    }
   }
 
   // Remover Pedido
@@ -69,8 +94,8 @@ class Usuario extends Pessoa {
 
     }
   }
-  //////////////////////////////////////////// SOLICITACOES
-  //////////////////////////////////////////// //////////////////////////////////////////////
+
+  ////////////////////////// SOLICITACOES ///////////////////
 
   // Solicitacao com comentario
   public void addSolicitacao(Jogo jogo) {
@@ -80,7 +105,6 @@ class Usuario extends Pessoa {
   // Solicitacao sem comentario
   public void addSolicitacao(Jogo jogo, String comentario) {
     this.solicitacoes.add(new Solicitacao(jogo, comentario));
-    System.out.println("aqui");
 
   }
 
@@ -100,27 +124,7 @@ class Usuario extends Pessoa {
     }
   }
 
-  public int verificaSeTemPedido(String nome) {
-    for (Pedido pedido : this.pedidos) {
-      if (pedido.getNomeJogo().toUpperCase().equals(nome.toUpperCase())) {
-        return pedido.getCodigo();
-      }
-    }
-    return 0;
-
-  }
-
-  public void verificaSeTemPedido2(int codigo) {
-    for (Pedido pedido : this.pedidos) {
-      if (pedido.getCodigo() == codigo) {
-        pedido.imprimePedido();
-        System.out.println("");
-        System.out.println("Para saber mais sobre esse pedido, entre com contato com " + super.getNome()
-            + " por WhatsApp pelo numero " + super.getTelefone());
-      }
-    }
-  }
-
+  // faz busca pelo codigo da solicitacao
   public void verificaSeSolicitacao(int codigo) {
     for (Solicitacao solicitacao : this.solicitacoes) {
       if (solicitacao.getCodigo() == codigo) {
@@ -150,10 +154,9 @@ class Usuario extends Pessoa {
     for (Pedido pedido : this.pedidos) {
       if (id == pedido.getCodigo()) {
         if (cpf.equals(super.getCpf())) {
-          return false;
+          this.pedidos.remove(pedido);
+          return true;
         }
-        this.pedidos.remove(pedido);
-        return true;
       }
     }
     return false;
@@ -163,10 +166,9 @@ class Usuario extends Pessoa {
     for (Solicitacao solicitacao : this.solicitacoes) {
       if (id == solicitacao.getCodigo()) {
         if (cpf.equals(super.getCpf())) {
-          return false;
+          this.solicitacoes.remove(solicitacao);
+          return true;
         }
-        this.solicitacoes.remove(solicitacao);
-        return true;
       }
     }
     return false;

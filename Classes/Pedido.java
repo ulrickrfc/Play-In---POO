@@ -1,3 +1,5 @@
+package Classes;
+
 class Pedido {
   public static int codigo_geral = 2;
   private int codigo;

@@ -1,3 +1,4 @@
+package Classes;
 
 class Solicitacao {
 

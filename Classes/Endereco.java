@@ -1,4 +1,6 @@
-class Endereco {
+package Classes;
+
+public class Endereco {
   private String cidade;
   private String estado;
 

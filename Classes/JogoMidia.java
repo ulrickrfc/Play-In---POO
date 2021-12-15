@@ -1,4 +1,6 @@
-class JogoMidia extends Jogo {
+package Classes;
+
+public class JogoMidia extends Jogo {
 
   private String estadoMidia;
 

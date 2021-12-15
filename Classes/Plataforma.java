@@ -1,6 +1,8 @@
+package Classes;
+
 import java.util.ArrayList;
 
-class Plataforma {
+public class Plataforma implements Controle {
 
   private ArrayList<Usuario> usuarios = new ArrayList<>();
 
@@ -17,6 +19,15 @@ class Plataforma {
     }
   }
 
+  public boolean deletarUsuario(String cpf) {
+    for (Usuario usuario : this.usuarios) {
+      if (usuario.getCpf().equals(cpf)) {
+        this.usuarios.remove(usuario);
+        return true;
+      }
+    }
+    return false;
+  }
   // Pedidos
 
   public void addPedido(String cpf, Jogo jogo, boolean com_comentario, String comentario) {
@@ -26,10 +37,8 @@ class Plataforma {
 
         if (com_comentario) {
           usuario.addPedido(jogo, comentario);
-          System.out.println("Add pedido plataforma");
         } else {
           usuario.addPedido(jogo);
-          System.out.println("Add pedido plataforma");
 
         }
       }
@@ -118,4 +127,7 @@ class Plataforma {
     return achouSolicitacao;
   }
 
+  public int getQtdUsuarios() {
+    return Controle.qtdPessoas(this.usuarios);
+  }
 }

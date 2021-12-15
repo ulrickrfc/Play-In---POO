@@ -1,4 +1,6 @@
-class JogoVirtual extends Jogo {
+package Classes;
+
+public class JogoVirtual extends Jogo {
   private String loja;
 
   public JogoVirtual(String titulo, String plataforma, String produtora, String categoria, int anoLancamento,
@@ -17,7 +19,7 @@ class JogoVirtual extends Jogo {
 
   @Override
   public String getDados() {
-    return super.getDados() + ", Estado da mídia: " + this.loja;
+    return super.getDados() + ", Loja onde está disponível " + this.loja;
   }
 
 }
